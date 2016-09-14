@@ -22,6 +22,7 @@ namespace EGUI {
 				if (OnClick != null) {
 					OnClick ();
 				}
+				GUIUtility.keyboardControl = 0;
 			}
 			base.Draw ();
 		}
