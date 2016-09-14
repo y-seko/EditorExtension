@@ -21,5 +21,9 @@ public class MyEditorWindow : Window {
 
 		hLayout.AddChild (new Label ("Label2", "Hello2"));
 		hLayout.AddChild (new Label ("Label3", "Hello3"));
+
+		this.AddChild (new Button("Click", () => {
+			Debug.Log("OnClick");
+		}, GUILayout.Width(50)));
 	}
 }
