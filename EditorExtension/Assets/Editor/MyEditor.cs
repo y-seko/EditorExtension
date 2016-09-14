@@ -13,17 +13,38 @@ public class MyEditor : MonoBehaviour {
 }
 
 public class MyEditorWindow : Window {
+
+	TextField textField;
+	TextField textField2;
+
+	Toggle toggle;
+
 	public override void Init() {
 		this.AddChild (new Label ("", "Hello"));
 
 		HorizontalLayout hLayout = new HorizontalLayout ();
 		this.AddChild (hLayout);
+		{
+			hLayout.AddChild (new Label ("Label2", "Hello2"));
+			hLayout.AddChild (new Label ("Label3", "Hello3"));
+		}
 
-		hLayout.AddChild (new Label ("Label2", "Hello2"));
-		hLayout.AddChild (new Label ("Label3", "Hello3"));
+		textField = new TextField ("");
+		this.AddChild (textField);
 
-		this.AddChild (new Button("Click", () => {
-			Debug.Log("OnClick");
-		}, GUILayout.Width(50)));
+		VerticalLayout vLayout = new VerticalLayout ();
+		this.AddChild (vLayout);
+		{
+			vLayout.AddChild (new Button ("Click", () => {
+				textField2.text = textField.text;
+			}, GUILayout.Width (50)));
+
+			textField2 = new TextField (null, "");
+			vLayout.AddChild (textField2);
+
+			vLayout.AddChild (new Toggle ("toggle1", false));
+
+			vLayout.AddChild (new ToggleLeft ("toggle2", false));
+		}
 	}
 }

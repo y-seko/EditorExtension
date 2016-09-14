@@ -5,9 +5,22 @@ namespace EGUI {
 	/// <summary>
 	/// 水平方向のレイアウトを維持するクラス
 	/// </summary>
-	public class HorizontalLayout : Node {
+	public class HorizontalLayout : BaseView {
+
+		public HorizontalLayout(ViewSkin skin, params GUILayoutOption[] options) : base(skin, options) {
+		}
+
+		public HorizontalLayout(ViewSkin skin) : this(skin, null) {
+		}
+
+		public HorizontalLayout(params GUILayoutOption[] options) : this(ViewSkin.Box, options) {
+		}
+
+		public HorizontalLayout() : this(ViewSkin.Box, null) {
+		}
+
 		public override void Draw() {
-			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.BeginHorizontal (GetGUIStyle(), options);
 			base.Draw ();
 			EditorGUILayout.EndHorizontal ();
 		}
