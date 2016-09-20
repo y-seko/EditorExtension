@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace EGUI {
 
@@ -13,12 +14,32 @@ namespace EGUI {
 		ToggleLeft,
 	}
 
+	public struct Size {
+		public int width;
+		public int height;
+
+		public Size(int width, int height) {
+			this.width = width;
+			this.height = height;
+		}
+	}
+
 	/// <summary>
 	/// 基底クラス
 	/// </summary>
 	public class BaseView : Node {
 		public ViewSkin skin = ViewSkin.None;
-		public GUILayoutOption[] options;
+		public Size size;
+
+		private GUILayoutOption[] _options;
+		public GUILayoutOption[] options {
+			get {
+				return GetOptions();
+			}
+			set {
+				_options = value;
+			}
+		}
 
 		public BaseView(BaseView parent) {
 			parent.AddView (this);
@@ -62,6 +83,29 @@ namespace EGUI {
 		/// <param name="view">View.</param>
 		public void AddView(BaseView view) {
 			AddChild (view);
+		}
+
+		/// <summary>
+		/// オプションを取得する
+		/// </summary>
+		/// <returns>The options.</returns>
+		private GUILayoutOption[] GetOptions() {
+			if (size.width != 0 || size.height != 0) {
+				List<GUILayoutOption> list = new List<GUILayoutOption>();
+				if (_options != null) {
+					foreach (GUILayoutOption option in _options) {
+						list.Add (option);
+					}
+				}
+				if (size.width > 0) {
+					list.Add (GUILayout.Width (size.width));
+				}
+				if (size.height > 0) {
+					list.Add (GUILayout.Height (size.height));
+				}
+				return list.ToArray ();
+			}
+			return null;
 		}
 	}
 }

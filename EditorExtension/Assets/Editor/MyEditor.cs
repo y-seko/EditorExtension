@@ -33,13 +33,14 @@ public class MyEditorWindow : Window {
 
 		VerticalLayout vLayout = new VerticalLayout (this.view);
 		{
-			new Button (vLayout, "Click", () => {
+			Button button = new Button (vLayout, "Click", () => {
 				textField2.text = textField.text;
 			});
+			button.size = new Size (100, 0);
 
 			textField2 = new TextField (vLayout, null, "");
-			new Toggle (vLayout, "toggle1", false);
-			new ToggleLeft (vLayout, "toggle2", false);
+			new Toggle (vLayout, "toggle1");
+			new ToggleLeft (vLayout, "toggle2");
 		}
 	}
 }
