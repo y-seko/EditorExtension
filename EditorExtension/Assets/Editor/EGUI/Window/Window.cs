@@ -8,7 +8,7 @@ namespace EGUI {
 	/// </summary>
 	public class Window : EditorWindow {
 
-		private BaseView view = new BaseView (ViewSkin.None, null);
+		private BaseView view = new BaseView ();
 
 		/// <summary>
 		/// 初期化

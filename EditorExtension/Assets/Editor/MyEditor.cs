@@ -37,7 +37,7 @@ public class MyEditorWindow : Window {
 		{
 			vLayout.AddChild (new Button ("Click", () => {
 				textField2.text = textField.text;
-			}, GUILayout.Width (50)));
+			}));
 
 			textField2 = new TextField (null, "");
 			vLayout.AddChild (textField2);

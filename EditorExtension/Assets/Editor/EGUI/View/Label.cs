@@ -9,18 +9,13 @@ namespace EGUI {
 		public string title;
 		public string text;
 
-		public Label(string title, string text, ViewSkin skin, params GUILayoutOption[] options) : base(skin, options) {
+		public Label(string title, string text) {
+			this.skin = ViewSkin.Label;
 			this.title = title;
 			this.text = text;
 		}
 
-		public Label(string title, string text, params GUILayoutOption[] options) : this(title, text, ViewSkin.Label, options) {
-		}
-
-		public Label(string title, string text) : this(title, text, null) {
-		}
-
-		public Label () : this(null, null, null) {
+		public Label () : this(null, null) {
 		}
 
 		/// <summary>

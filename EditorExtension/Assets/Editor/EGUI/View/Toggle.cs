@@ -7,26 +7,13 @@ namespace EGUI {
 	/// トグルボタン
 	/// </summary>
 	public class Toggle : BaseView {
-
 		public string title;
 		public bool isOn;
 
-		public Toggle(string title, bool isOn, ViewSkin skin, params GUILayoutOption[] options)
-			: base(skin, options) {
+		public Toggle (string title, bool isOn) {
+			this.skin = ViewSkin.Toggle;
 			this.title = title;
 			this.isOn = isOn;
-		}
-
-		public Toggle (string title, bool isOn, ViewSkin skin)
-			: this (title, isOn, skin, null) {
-		}
-
-		public Toggle (string title, bool isOn, params GUILayoutOption[] options)
-			: this (title, isOn, ViewSkin.Toggle, options) {
-		}
-
-		public Toggle (string title, bool isOn)
-			: this (title, isOn, ViewSkin.Toggle) {
 		}
 
 		public Toggle (string title)

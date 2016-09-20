@@ -17,13 +17,8 @@ namespace EGUI {
 	/// 基底クラス
 	/// </summary>
 	public class BaseView : Node {
-		public ViewSkin skin;
+		public ViewSkin skin = ViewSkin.None;
 		public GUILayoutOption[] options;
-
-		public BaseView(ViewSkin skin, params GUILayoutOption[] options) {
-			this.skin = skin;
-			this.options = options;
-		}
 
 		/// <summary>
 		/// GUIStyleを取得する.

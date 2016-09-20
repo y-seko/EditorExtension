@@ -7,16 +7,8 @@ namespace EGUI {
 	/// </summary>
 	public class VerticalLayout : BaseView {
 
-		public VerticalLayout(ViewSkin skin, params GUILayoutOption[] options) : base(skin, options) {
-		}
-
-		public VerticalLayout(ViewSkin skin) : this(skin, null) {
-		}
-
-		public VerticalLayout(params GUILayoutOption[] options) : this(ViewSkin.Box, options) {
-		}
-
-		public VerticalLayout() : this(ViewSkin.Box, null) {
+		public VerticalLayout() {
+			skin = ViewSkin.Box;
 		}
 
 		/// <summary>
