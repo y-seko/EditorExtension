@@ -10,14 +10,13 @@ namespace EGUI {
 		public string title;
 		public bool isOn;
 
-		public Toggle (string title, bool isOn) {
+		public Toggle (BaseView parent, string title, bool isOn) : base(parent) {
 			this.skin = ViewSkin.Toggle;
 			this.title = title;
 			this.isOn = isOn;
 		}
 
-		public Toggle (string title)
-			: this (title, false) {
+		public Toggle (BaseView parent, string title) : this (parent, title, false) {
 		}
 
 		/// <summary>

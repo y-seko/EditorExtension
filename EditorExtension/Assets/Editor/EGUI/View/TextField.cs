@@ -9,13 +9,13 @@ namespace EGUI {
 		public string title;
 		public string text;
 
-		public TextField(string title, string text) {
+		public TextField(BaseView parent, string title, string text) : base(parent) {
 			this.skin = ViewSkin.TextField;
 			this.title = title;
 			this.text = text;
 		}
 
-		public TextField(string text) : this("", text) {
+		public TextField(BaseView parent, string text) : this(parent, "", text) {
 		}
 
 		/// <summary>

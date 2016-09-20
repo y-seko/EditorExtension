@@ -8,7 +8,11 @@ namespace EGUI {
 	/// </summary>
 	public class Window : EditorWindow {
 
-		private BaseView view = new BaseView ();
+		public BaseView view { get; private set; }
+
+		public Window() {
+			view = new BaseView ();
+		}
 
 		/// <summary>
 		/// 初期化

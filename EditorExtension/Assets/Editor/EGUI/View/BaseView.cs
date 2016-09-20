@@ -20,6 +20,13 @@ namespace EGUI {
 		public ViewSkin skin = ViewSkin.None;
 		public GUILayoutOption[] options;
 
+		public BaseView(BaseView parent) {
+			parent.AddView (this);
+		}
+
+		public BaseView() {
+		}
+
 		/// <summary>
 		/// GUIStyleを取得する.
 		/// </summary>
@@ -47,6 +54,14 @@ namespace EGUI {
 			foreach (BaseView child in children) {
 				child.Draw ();
 			}
+		}
+
+		/// <summary>
+		/// ビューを追加する
+		/// </summary>
+		/// <param name="view">View.</param>
+		public void AddView(BaseView view) {
+			AddChild (view);
 		}
 	}
 }

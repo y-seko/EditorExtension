@@ -7,7 +7,7 @@ namespace EGUI {
 	/// </summary>
 	public class HorizontalLayout : BaseView {
 
-		public HorizontalLayout() {
+		public HorizontalLayout(BaseView parent) : base(parent) {
 			skin = ViewSkin.Box;
 		}
 

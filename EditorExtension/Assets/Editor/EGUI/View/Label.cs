@@ -9,13 +9,13 @@ namespace EGUI {
 		public string title;
 		public string text;
 
-		public Label(string title, string text) {
+		public Label(BaseView parent, string title, string text) : base(parent) {
 			this.skin = ViewSkin.Label;
 			this.title = title;
 			this.text = text;
 		}
 
-		public Label () : this(null, null) {
+		public Label (BaseView parent) : this(parent, null, null) {
 		}
 
 		/// <summary>

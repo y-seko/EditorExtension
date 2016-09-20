@@ -7,7 +7,7 @@ namespace EGUI {
 	/// </summary>
 	public class VerticalLayout : BaseView {
 
-		public VerticalLayout() {
+		public VerticalLayout(BaseView parent) : base(parent) {
 			skin = ViewSkin.Box;
 		}
 

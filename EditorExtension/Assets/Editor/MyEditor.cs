@@ -20,31 +20,26 @@ public class MyEditorWindow : Window {
 	Toggle toggle;
 
 	public override void Init() {
-		this.AddChild (new Label ("", "Hello"));
 
-		HorizontalLayout hLayout = new HorizontalLayout ();
-		this.AddChild (hLayout);
+		new Label (this.view, "", "Hello");
+
+		HorizontalLayout hLayout = new HorizontalLayout (this.view);
 		{
-			hLayout.AddChild (new Label ("Label2", "Hello2"));
-			hLayout.AddChild (new Label ("Label3", "Hello3"));
+			new Label (hLayout, "Label2", "Hello2");
+			new Label (hLayout, "Label3", "Hello3");
 		}
 
-		textField = new TextField ("");
-		this.AddChild (textField);
+		textField = new TextField (this.view, "");
 
-		VerticalLayout vLayout = new VerticalLayout ();
-		this.AddChild (vLayout);
+		VerticalLayout vLayout = new VerticalLayout (this.view);
 		{
-			vLayout.AddChild (new Button ("Click", () => {
+			new Button (vLayout, "Click", () => {
 				textField2.text = textField.text;
-			}));
+			});
 
-			textField2 = new TextField (null, "");
-			vLayout.AddChild (textField2);
-
-			vLayout.AddChild (new Toggle ("toggle1", false));
-
-			vLayout.AddChild (new ToggleLeft ("toggle2", false));
+			textField2 = new TextField (vLayout, null, "");
+			new Toggle (vLayout, "toggle1", false);
+			new ToggleLeft (vLayout, "toggle2", false);
 		}
 	}
 }

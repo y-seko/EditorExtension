@@ -7,7 +7,7 @@ namespace EGUI {
 		public string text;
 		public Action OnClick;
 
-		public Button(string text, Action OnClick) {
+		public Button(BaseView parent, string text, Action OnClick) : base(parent) {
 			this.text = text;
 			this.OnClick = OnClick;
 		}
