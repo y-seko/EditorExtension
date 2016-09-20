@@ -16,15 +16,6 @@ namespace EGUI {
 		}
 
 		/// <summary>
-		/// 描画
-		/// </summary>
-		public virtual void Draw () {
-			foreach (Node child in children) {
-				child.Draw ();
-			}
-		}
-
-		/// <summary>
 		/// 子を追加する
 		/// </summary>
 		/// <param name="child">Child.</param>

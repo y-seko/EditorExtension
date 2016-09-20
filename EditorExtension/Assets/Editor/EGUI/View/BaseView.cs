@@ -16,7 +16,7 @@ namespace EGUI {
 	/// <summary>
 	/// 基底クラス
 	/// </summary>
-	public abstract class BaseView : Node {
+	public class BaseView : Node {
 		public ViewSkin skin;
 		public GUILayoutOption[] options;
 
@@ -43,6 +43,15 @@ namespace EGUI {
 				return GUI.skin.label;
 			}
 			return GUIStyle.none;
+		}
+
+		/// <summary>
+		/// 描画
+		/// </summary>
+		public virtual void Draw () {
+			foreach (BaseView child in children) {
+				child.Draw ();
+			}
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace EGUI {
 	/// </summary>
 	public class Window : EditorWindow {
 
-		private Node parent = new Node ();
+		private BaseView view = new BaseView (ViewSkin.None, null);
 
 		/// <summary>
 		/// 初期化
@@ -17,12 +17,12 @@ namespace EGUI {
 		}
 
 		public void AddChild(Node node) {
-			parent.AddChild (node);
+			view.AddChild (node);
 		}
 
 		void OnGUI() {
-			if (parent != null) {
-				parent.Draw ();
+			if (view != null) {
+				view.Draw ();
 			}
 		}
 
