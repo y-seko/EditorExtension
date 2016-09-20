@@ -8,10 +8,10 @@ namespace EGUI {
 	/// </summary>
 	public class Window : EditorWindow {
 
-		public BaseView view { get; private set; }
+		public ScrollView view { get; private set; }
 
 		public Window() {
-			view = new BaseView ();
+			view = new ScrollView ();
 		}
 
 		/// <summary>
