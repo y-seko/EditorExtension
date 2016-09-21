@@ -39,7 +39,9 @@ public class MyEditorWindow : Window, IToggleEventReceiver {
 			button.size = new Size (100, 0);
 
 			textField2 = new TextField (vLayout, null, "");
-			new Toggle (vLayout, "toggle1").AddReceiver(this);
+			new Toggle (vLayout, "toggle1", (value) => {
+				Debug.Log("" + value);
+			}).AddReceiver(this);
 			new ToggleLeft (vLayout, "toggle2").AddReceiver(this);
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,16 +11,23 @@ namespace EGUI {
 	public class Toggle : BaseView {
 		public string title;
 		public bool isOn = false;
+		public Action<bool> callback;
 		public List<IToggleEventReceiver> receivers;
 
-		public Toggle (BaseView parent, string title, bool isOn) : base(parent) {
+		public Toggle (BaseView parent, string title, bool isOn, Action<bool> OnValueChanged)
+			: base(parent) {
 			this.skin = ViewSkin.Toggle;
 			this.title = title;
 			this.isOn = isOn;
 			this.receivers = new List<IToggleEventReceiver> ();
+			this.callback = OnValueChanged;
 		}
 
-		public Toggle (BaseView parent, string title) : this (parent, title, false) {
+		public Toggle (BaseView parent, string title, Action<bool> OnValueChanged)
+			: this(parent, title, false, OnValueChanged) {
+		}
+
+		public Toggle (BaseView parent, string title) : this (parent, title, false, null) {
 		}
 
 		/// <summary>
@@ -54,6 +62,10 @@ namespace EGUI {
 		/// 値が変更された時に呼ばれるコールバック
 		/// </summary>
 		protected void OnValueChanged() {
+			if (callback != null) {
+				callback (isOn);
+			}
+
 			foreach (IToggleEventReceiver receiver in receivers) {
 				receiver.OnValueChanged (this);
 			}
