@@ -12,7 +12,7 @@ public class MyEditor : MonoBehaviour {
 	}
 }
 
-public class MyEditorWindow : Window, IToggleEventReceiver {
+public class MyEditorWindow : Window, IToggleEventReceiver, IButtonEventReceiver {
 
 	TextField textField;
 	TextField textField2;
@@ -37,6 +37,7 @@ public class MyEditorWindow : Window, IToggleEventReceiver {
 				textField2.text = textField.text;
 			});
 			button.size = new Size (100, 0);
+			button.AddReceiver (this);
 
 			textField2 = new TextField (vLayout, null, "");
 			new Toggle (vLayout, "toggle1", (value) => {
@@ -47,6 +48,10 @@ public class MyEditorWindow : Window, IToggleEventReceiver {
 	}
 
 	public void OnValueChanged(Toggle toggle) {
-		Debug.Log( toggle.title + " : " + toggle.isOn);
+		Debug.Log(toggle.title + " : " + toggle.isOn);
+	}
+
+	public void OnClick(Button button) {
+		Debug.Log (button.text);
 	}
 }
