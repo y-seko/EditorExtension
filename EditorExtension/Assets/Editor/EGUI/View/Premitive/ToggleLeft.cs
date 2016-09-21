@@ -17,15 +17,12 @@ namespace EGUI {
 		}
 
 		/// <summary>
-		/// 描画
+		/// トグルを描画する
 		/// </summary>
-		public override void Draw() {
-			bool prev = isOn;
-			isOn = EditorGUILayout.ToggleLeft (title, isOn, GetGUIStyle(), options);
-			if (isOn != prev) {
-				OnValueChanged ();
-			}
-//			base.Draw ();
+		/// <returns>true</returns>
+		/// <c>false</c>
+		protected override bool DrawToggle() {
+			return EditorGUILayout.ToggleLeft (title, isOn, GetGUIStyle(), options);;
 		}
 	}
 }

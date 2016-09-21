@@ -23,11 +23,19 @@ namespace EGUI {
 		}
 
 		/// <summary>
+		/// トグルを描画する
+		/// </summary>
+		/// <returns><c>true</c>, if toggle was drawn, <c>false</c> otherwise.</returns>
+		protected virtual bool DrawToggle() {
+			return EditorGUILayout.Toggle (title, isOn, GetGUIStyle(), options);;
+		}
+
+		/// <summary>
 		/// 描画
 		/// </summary>
 		public override void Draw() {
 			bool prev = isOn;
-			isOn = EditorGUILayout.Toggle (title, isOn, GetGUIStyle(), options);
+			isOn = DrawToggle ();
 			if (isOn != prev) {
 				OnValueChanged ();
 			}
