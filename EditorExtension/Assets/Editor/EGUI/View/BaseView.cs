@@ -42,7 +42,9 @@ namespace EGUI {
 		}
 
 		public BaseView(BaseView parent) {
-			parent.AddView (this);
+			if (parent != null) {
+				parent.AddView (this);
+			}
 		}
 
 		public BaseView() {

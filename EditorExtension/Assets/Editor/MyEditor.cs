@@ -45,6 +45,19 @@ public class MyEditorWindow : Window, IToggleEventReceiver, IButtonEventReceiver
 			}).AddReceiver(this);
 			new ToggleLeft (vLayout, "toggle2").AddReceiver(this);
 		}
+
+//		CheckListView view = new CheckListView (this.view, "Check List");
+//		view.SetItems (new string[]{
+//			"Item 1",
+//			"Item 2",
+//			"Item 3",
+//		});
+
+		ListView<ItemCell, Item> view = new ListView<ItemCell, Item> (this.view, ListView<ItemCell, Item>.Direction.Horizontal);
+		view.SetItemList (new List<Item> () {
+			new Item("Item1", "Apple"),
+			new Item("Item2", "Orange"),
+		});
 	}
 
 	public void OnValueChanged(Toggle toggle) {
@@ -53,5 +66,22 @@ public class MyEditorWindow : Window, IToggleEventReceiver, IButtonEventReceiver
 
 	public void OnClick(Button button) {
 		Debug.Log (button.text);
+	}
+}
+
+public class Item {
+	public string name;
+	public string text;
+	public Item(string name, string text) {
+		this.name = name;
+		this.text = text;
+	}
+}
+
+public class ItemCell : ListViewCell {
+	public override void CreateView(object obj) {
+		Item item = (Item)obj;
+		new Label (this, item.name, "");
+		new Label (this, null, item.text);
 	}
 }

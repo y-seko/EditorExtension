@@ -19,9 +19,29 @@ namespace EGUI {
 		/// 子を追加する
 		/// </summary>
 		/// <param name="child">Child.</param>
-		public virtual void AddChild(Node child) {
+		public void AddChild(Node child) {
 			this.children.Add (child);
 			child.parent = this;
+		}
+
+		/// <summary>
+		/// 子を外す
+		/// </summary>
+		/// <param name="child">Child.</param>
+		public void RemoveChild(Node child) {
+			this.children.Remove (child);
+			child.parent = null;
+		}
+
+		/// <summary>
+		/// 親を設定する
+		/// </summary>
+		/// <param name="parent">Parent.</param>
+		public void SetParent(Node parent) {
+			if (this.parent != null) {
+				this.parent.RemoveChild (this);
+			}
+			parent.AddChild (this);
 		}
 	}
 }
