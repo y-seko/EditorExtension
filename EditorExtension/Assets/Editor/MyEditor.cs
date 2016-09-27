@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using EGUI;
 
 public class MyEditor : MonoBehaviour {
 	[MenuItem("MyEditor/Open Window")]
@@ -10,8 +11,5 @@ public class MyEditor : MonoBehaviour {
 	}
 }
 
-public class MyEditorWindow : EditorWindow {
-	void OnGUI() {
-		EditorGUILayout.LabelField ("My Editor");
-	}
+public class MyEditorWindow : Window {
 }
