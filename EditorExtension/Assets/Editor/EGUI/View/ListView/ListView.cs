@@ -15,7 +15,7 @@ namespace EGUI {
 		}
 
 		BaseView layout;
-		List<ListViewCell> views = new List<ListViewCell> ();
+		List<C> views = new List<C> ();
 		List<I> itemList;
 
 		public ListView(BaseView parent, Direction direction) : base(parent) {
@@ -49,6 +49,14 @@ namespace EGUI {
 		/// <param name="index">Index.</param>
 		public I GetItem(int index) {
 			return this.itemList [index];
+		}
+
+		/// <summary>
+		/// Gets all cells.
+		/// </summary>
+		/// <returns>The all cells.</returns>
+		public List<C> GetAllCells() {
+			return views;
 		}
 	}
 }

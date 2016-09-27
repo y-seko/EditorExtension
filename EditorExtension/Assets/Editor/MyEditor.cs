@@ -46,14 +46,15 @@ public class MyEditorWindow : Window, IToggleEventReceiver, IButtonEventReceiver
 			new ToggleLeft (vLayout, "toggle2").AddReceiver(this);
 		}
 
-//		CheckListView view = new CheckListView (this.view, "Check List");
-//		view.SetItems (new string[]{
-//			"Item 1",
-//			"Item 2",
-//			"Item 3",
-//		});
+		CheckBoxListView checkListView = new CheckBoxListView (this.view, CheckBoxListView.CheckType.Multiple);
+		checkListView.SetHeaderText ("Check List");
+		checkListView.SetItemList (new List<string>(){
+			"Item 1",
+			"Item 2",
+			"Item 3",
+		});
 
-		ListView<ItemCell, Item> view = new ListView<ItemCell, Item> (this.view, ListView<ItemCell, Item>.Direction.Horizontal);
+		ListView<ItemCell, Item> view = new ListView<ItemCell, Item> (this.view, ListView<ItemCell, Item>.Direction.Vertical);
 		view.SetItemList (new List<Item> () {
 			new Item("Item1", "Apple"),
 			new Item("Item2", "Orange"),

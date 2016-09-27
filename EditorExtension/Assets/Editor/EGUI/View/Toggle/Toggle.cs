@@ -14,6 +14,8 @@ namespace EGUI {
 		public Action<bool> callback;
 		public List<IToggleEventReceiver> receivers;
 
+		public RectOffset margin;
+
 		public Toggle (BaseView parent, string title, bool isOn, Action<bool> OnValueChanged)
 			: base(parent) {
 			this.skin = ViewSkin.Toggle;
@@ -69,6 +71,8 @@ namespace EGUI {
 			foreach (IToggleEventReceiver receiver in receivers) {
 				receiver.OnValueChanged (this);
 			}
+
+			GUIUtility.keyboardControl = 0;
 		}
 	}
 }
