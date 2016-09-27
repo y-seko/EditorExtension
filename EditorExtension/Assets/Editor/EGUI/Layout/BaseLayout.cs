@@ -6,6 +6,13 @@ namespace EGUI {
 	/// Base layout.
 	/// </summary>
 	public class BaseLayout : BaseView {
+
+		public BaseLayout(BaseLayout parent) : base(parent) {
+		}
+
+		public BaseLayout() : this(null) {
+		}
+
 		/// <summary>
 		/// 描画
 		/// </summary>

@@ -11,12 +11,12 @@ namespace EGUI {
 		Node parent;
 		protected List<Node> children;
 
-		public Node() {
+		public Node(Node parent) {
 			children = new List<Node> ();
+			SetParent (parent);
 		}
 
-		public Node(Node parent) : this() {
-			SetParent (parent);
+		public Node() : this(null) {
 		}
 
 		/// <summary>
@@ -28,8 +28,10 @@ namespace EGUI {
 				this.parent.RemoveChild (this);
 				this.parent = null;
 			}
-			parent.AddChild (this);
-			this.parent = parent;
+			if (parent != null) {
+				parent.AddChild (this);
+				this.parent = parent;
+			}
 		}
 
 		/// <summary>

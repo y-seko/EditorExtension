@@ -16,14 +16,8 @@ public class MyEditorWindow : Window {
 		VerticalLayout layout = new VerticalLayout ();
 		AddView (layout);
 
-		Label label = new Label ();
-		layout.AddChild (label);
-	}
-}
-
-public class Label : BaseView {
-	public override void OnDraw() {
-		EditorGUILayout.LabelField ("", "Hello");
+		new Label (layout, "Hello");
+		new Label (layout, "Title", "Hello2");
 	}
 }
 
