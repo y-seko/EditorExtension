@@ -9,7 +9,7 @@ namespace EGUI {
 	public class Node {
 
 		Node parent;
-		List<Node> children;
+		protected List<Node> children;
 
 		public Node() {
 			children = new List<Node> ();

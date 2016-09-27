@@ -12,4 +12,25 @@ public class MyEditor : MonoBehaviour {
 }
 
 public class MyEditorWindow : Window {
+	public override void OnCreateView() {
+		VerticalLayout layout = new VerticalLayout ();
+		AddView (layout);
+
+		Label label = new Label ();
+		layout.AddChild (label);
+	}
+}
+
+public class Label : BaseView {
+	public override void OnDraw() {
+		EditorGUILayout.LabelField ("", "Hello");
+	}
+}
+
+public class VerticalLayout : BaseLayout {
+	public override void OnDraw() {
+		EditorGUILayout.BeginVertical ();
+		DrawChildren ();
+		EditorGUILayout.EndVertical ();
+	}
 }
