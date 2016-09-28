@@ -43,6 +43,7 @@ namespace EGUI {
 				foreach (IButtonEventReceiver receiver in receivers) {
 					receiver.OnClick (this);
 				}
+				GUIUtility.keyboardControl = 0;
 			}
 		}
 
