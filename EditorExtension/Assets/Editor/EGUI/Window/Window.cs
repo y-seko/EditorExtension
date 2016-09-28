@@ -8,7 +8,7 @@ namespace EGUI {
 	/// </summary>
 	public class Window : EditorWindow {
 
-		BaseLayout layout = new BaseLayout();
+		public ScrollLayout layout = new ScrollLayout(null);
 
 		/// <summary>
 		/// ウィンドウが有効になった時に呼ばれる

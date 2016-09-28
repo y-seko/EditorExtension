@@ -12,19 +12,23 @@ public class MyEditor : MonoBehaviour {
 }
 
 public class MyEditorWindow : Window {
+	/// <summary>
+	/// ビューの作成
+	/// </summary>
 	public override void OnCreateView() {
-		VerticalLayout layout = new VerticalLayout ();
-		AddView (layout);
+		//VerticalLayout layout = new VerticalLayout (this.layout);
 
 		new Label (layout, "Hello");
 		new Label (layout, "Title", "Hello2");
-	}
-}
-
-public class VerticalLayout : BaseLayout {
-	public override void OnDraw() {
-		EditorGUILayout.BeginVertical ();
-		DrawChildren ();
-		EditorGUILayout.EndVertical ();
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
+		new Label (layout, "Title", "Hello2");
 	}
 }
