@@ -8,13 +8,14 @@ namespace EGUI {
 	public class VerticalLayoutView : BaseLayoutView {
 
 		public VerticalLayoutView(BaseLayoutView parent) : base(parent) {
+			this.style = ViewStyle.Box;
 		}
 
 		/// <summary>
 		/// 描画
 		/// </summary>
 		public override void OnDraw() {
-			EditorGUILayout.BeginVertical ();
+			EditorGUILayout.BeginVertical (style.GetGUIStyle());
 			DrawChildren ();
 			EditorGUILayout.EndVertical ();
 		}

@@ -8,7 +8,7 @@ namespace EGUI {
 	/// </summary>
 	public class Window : EditorWindow {
 
-		public ScrollLayoutView layout = new ScrollLayoutView(null);
+		public ScrollLayoutView view = new ScrollLayoutView(null);
 
 		/// <summary>
 		/// ウィンドウが有効になった時に呼ばれる
@@ -22,7 +22,7 @@ namespace EGUI {
 		/// 描画
 		/// </summary>
 		void OnGUI() {
-			layout.OnDraw ();
+			view.OnDraw ();
 		}
 
 		/// <summary>
@@ -36,7 +36,7 @@ namespace EGUI {
 		/// </summary>
 		/// <param name="view">View.</param>
 		public void AddView(BaseView view) {
-			layout.AddChild (view);
+			view.AddChild (view);
 		}
 
 		/// <summary>
@@ -44,7 +44,7 @@ namespace EGUI {
 		/// </summary>
 		/// <param name="view">View.</param>
 		public void RemoveView(BaseView view) {
-			layout.RemoveChild (view);
+			view.RemoveChild (view);
 		}
 	}
 }

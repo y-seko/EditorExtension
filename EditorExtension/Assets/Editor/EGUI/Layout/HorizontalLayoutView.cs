@@ -8,13 +8,14 @@ namespace EGUI {
 	public class HorizontalLayoutView : BaseLayoutView {
 
 		public HorizontalLayoutView(BaseLayoutView parent) : base(parent) {
+			this.style = ViewStyle.Box;
 		}
 
 		/// <summary>
 		/// 描画
 		/// </summary>
 		public override void OnDraw() {
-			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.BeginHorizontal (style.GetGUIStyle());
 			DrawChildren ();
 			EditorGUILayout.EndHorizontal ();
 		}

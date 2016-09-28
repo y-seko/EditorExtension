@@ -16,19 +16,19 @@ public class MyEditorWindow : Window {
 	/// ビューの作成
 	/// </summary>
 	public override void OnCreateView() {
-		//VerticalLayout layout = new VerticalLayout (this.layout);
+//		VerticalLayoutView layout = new VerticalLayoutView (this.layout);
 
-		new Label (layout, "Hello");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
-		new Label (layout, "Title", "Hello2");
+		new Label (view, "Hello");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
+		new Label (view, "Title", "Hello2");
 	}
 }

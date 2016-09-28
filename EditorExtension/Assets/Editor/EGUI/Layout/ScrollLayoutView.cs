@@ -16,7 +16,7 @@ namespace EGUI {
 		/// 描画
 		/// </summary>
 		public override void OnDraw() {
-			scrollPosition = EditorGUILayout.BeginScrollView (scrollPosition);
+			scrollPosition = EditorGUILayout.BeginScrollView (scrollPosition, style.GetGUIStyle());
 			DrawChildren ();
 			EditorGUILayout.EndScrollView ();
 		}

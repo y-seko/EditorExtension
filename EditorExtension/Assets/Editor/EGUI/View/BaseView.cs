@@ -7,6 +7,8 @@ namespace EGUI {
 	/// </summary>
 	public class BaseView : Node {
 
+		public ViewStyle style = ViewStyle.None;
+
 		public BaseView(BaseLayoutView parent) : base(parent) {
 		}
 
