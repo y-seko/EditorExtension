@@ -11,29 +11,36 @@ public class MyEditor : MonoBehaviour {
 	}
 }
 
-public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver {
+public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver, ISliderEventReceiver {
 
 	TextField textField;
+	TextArea textArea;
+
+	Slider slider;
 
 	/// <summary>
 	/// ビューの作成
 	/// </summary>
 	public override void OnCreateView() {
-//		VerticalLayoutView layout = new VerticalLayoutView (this.layout);
-
 		Label label = new Label (view, "Label", "Hello");
-		label.AddOptions (GUILayout.Height(50));
+		label.style = ViewStyle.Box;
+		label.AddOptions (GUILayout.Height(20));
 
-		textField = new TextField (view, "Text Field");
+		VerticalLayoutView layout = new VerticalLayoutView (view);
+		textField = new TextField (layout, "Text Field");
 
-		Button button = new Button (view, "Click");
+		Button button = new Button (layout, "Click");
 		button.AddOptions (GUILayout.Width(70));
 		button.AddReceiver (this);
 
-		new TextArea (view, "Text Area");
+		textArea = new TextArea (layout, "Text Area");
 
 		new Toggle (view, "Toggle").AddReceiver(this);
+
 		new ToggleLeft (view, "Toggle").AddReceiver(this);
+
+		slider = new Slider (view, "Slider", 1, 10, 1);
+		slider.AddReceiver (this);
 	}
 
 	/// <summary>
@@ -41,7 +48,7 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 	/// </summary>
 	/// <param name="button">Button.</param>
 	public void OnClick(Button button) {
-		Debug.Log (textField.text);
+		textArea.text = textField.text;
 	}
 
 	/// <summary>
@@ -50,5 +57,16 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 	/// <param name="toggle">Toggle.</param>
 	public void OnValueChanged(Toggle toggle) {
 		Debug.Log ("OnValueChanged : " + toggle.isCheck);
+	}
+
+	/// <summary>
+	/// Raises the value changed event.
+	/// </summary>
+	/// <param name="toggle">Toggle.</param>
+	/// <param name="slider">Slider.</param>
+	public void OnValueChanged(Slider slider) {
+		if (Selection.activeTransform) {
+			Selection.activeTransform.localScale = new Vector3 (slider.value, slider.value, slider.value);
+		}
 	}
 }
