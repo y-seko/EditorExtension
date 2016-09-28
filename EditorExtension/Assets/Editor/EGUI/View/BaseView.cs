@@ -6,7 +6,7 @@ namespace EGUI {
 	/// <summary>
 	/// Base view.
 	/// </summary>
-	public class BaseView : Node {
+	public abstract class BaseView : Node {
 
 		public ViewStyle style = ViewStyle.None;
 		protected List<GUILayoutOption> optionList;
@@ -21,8 +21,7 @@ namespace EGUI {
 		/// <summary>
 		/// 描画
 		/// </summary>
-		public virtual void OnDraw() {
-		}
+		public abstract void OnDraw();
 
 		/// <summary>
 		/// Adds the options.
