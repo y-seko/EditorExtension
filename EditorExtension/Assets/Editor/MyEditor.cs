@@ -33,6 +33,7 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 		new TextArea (view, "Text Area");
 
 		new Toggle (view, "Toggle").AddReceiver(this);
+		new ToggleLeft (view, "Toggle").AddReceiver(this);
 	}
 
 	/// <summary>

@@ -47,7 +47,7 @@ namespace EGUI {
 		/// </summary>
 		public override void OnDraw () {
 			bool prev = isCheck;
-			isCheck = EditorGUILayout.Toggle (title, isCheck, style.GetGUIStyle (), optionList.ToArray ());
+			isCheck = DrawToggle ();
 			if (isCheck != prev) {
 				foreach (IToggleEventReceiver receiver in receivers) {
 					receiver.OnValueChanged (this);
@@ -70,6 +70,14 @@ namespace EGUI {
 		/// <param name="receiver">Receiver.</param>
 		public void RemoveReceiver(IToggleEventReceiver receiver) {
 			receivers.Remove (receiver);
+		}
+
+		/// <summary>
+		/// Draws the toggle.
+		/// </summary>
+		/// <returns><c>true</c>, if toggle was drawn, <c>false</c> otherwise.</returns>
+		public virtual bool DrawToggle() {
+			return EditorGUILayout.Toggle (title, isCheck, style.GetGUIStyle (), optionList.ToArray ());
 		}
 	}
 }
