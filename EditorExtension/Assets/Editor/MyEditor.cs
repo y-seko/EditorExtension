@@ -11,7 +11,7 @@ public class MyEditor : MonoBehaviour {
 	}
 }
 
-public class MyEditorWindow : Window, IButtonEventReceiver {
+public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver {
 
 	TextField textField;
 
@@ -31,9 +31,23 @@ public class MyEditorWindow : Window, IButtonEventReceiver {
 		button.AddReceiver (this);
 
 		new TextArea (view, "Text Area");
+
+		new Toggle (view, "Toggle").AddReceiver(this);
 	}
 
+	/// <summary>
+	/// Raises the click event.
+	/// </summary>
+	/// <param name="button">Button.</param>
 	public void OnClick(Button button) {
 		Debug.Log (textField.text);
+	}
+
+	/// <summary>
+	/// Raises the value changed event.
+	/// </summary>
+	/// <param name="toggle">Toggle.</param>
+	public void OnValueChanged(Toggle toggle) {
+		Debug.Log ("OnValueChanged : " + toggle.isCheck);
 	}
 }
