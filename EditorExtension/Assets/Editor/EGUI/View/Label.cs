@@ -31,7 +31,7 @@ namespace EGUI {
 		/// 描画
 		/// </summary>
 		public override void OnDraw() {
-			EditorGUILayout.LabelField (title, text, style.GetGUIStyle());
+			EditorGUILayout.LabelField (title, text, style.GetGUIStyle(), optionList.ToArray());
 		}
 	}
 }

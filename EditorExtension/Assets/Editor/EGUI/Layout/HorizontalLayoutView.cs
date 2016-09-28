@@ -15,7 +15,7 @@ namespace EGUI {
 		/// 描画
 		/// </summary>
 		public override void OnDraw() {
-			EditorGUILayout.BeginHorizontal (style.GetGUIStyle());
+			EditorGUILayout.BeginHorizontal (style.GetGUIStyle(), optionList.ToArray());
 			DrawChildren ();
 			EditorGUILayout.EndHorizontal ();
 		}

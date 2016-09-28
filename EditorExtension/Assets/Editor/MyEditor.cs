@@ -18,7 +18,7 @@ public class MyEditorWindow : Window {
 	public override void OnCreateView() {
 //		VerticalLayoutView layout = new VerticalLayoutView (this.layout);
 
-		new Label (view, "Hello");
+		Label label = new Label (view, "Hello");
 		new Label (view, "Title", "Hello2");
 		new Label (view, "Title", "Hello2");
 		new Label (view, "Title", "Hello2");
@@ -30,5 +30,8 @@ public class MyEditorWindow : Window {
 		new Label (view, "Title", "Hello2");
 		new Label (view, "Title", "Hello2");
 		new Label (view, "Title", "Hello2");
+
+//		label.AddOption (GUILayout.Height(100));
+		label.AddOptions (GUILayout.Height(50));
 	}
 }
