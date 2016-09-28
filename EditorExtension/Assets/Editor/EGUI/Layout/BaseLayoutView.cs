@@ -5,12 +5,12 @@ namespace EGUI {
 	/// <summary>
 	/// Base layout.
 	/// </summary>
-	public class BaseLayout : BaseView {
+	public class BaseLayoutView : BaseView {
 
-		public BaseLayout(BaseLayout parent) : base(parent) {
+		public BaseLayoutView(BaseLayoutView parent) : base(parent) {
 		}
 
-		public BaseLayout() : this(null) {
+		public BaseLayoutView() : this(null) {
 		}
 
 		/// <summary>

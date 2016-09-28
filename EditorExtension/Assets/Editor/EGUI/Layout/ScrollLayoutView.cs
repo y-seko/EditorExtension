@@ -2,11 +2,14 @@
 using UnityEditor;
 
 namespace EGUI {
-	public class ScrollLayout : BaseLayout {
+	/// <summary>
+	/// スクロール可能なレイアウトビュー
+	/// </summary>
+	public class ScrollLayoutView : BaseLayoutView {
 
 		Vector2 scrollPosition;
 
-		public ScrollLayout(BaseLayout parent) : base(parent) {
+		public ScrollLayoutView(BaseLayoutView parent) : base(parent) {
 		}
 
 		/// <summary>

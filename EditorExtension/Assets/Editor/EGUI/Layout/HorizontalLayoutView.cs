@@ -3,11 +3,11 @@ using UnityEditor;
 
 namespace EGUI {
 	/// <summary>
-	/// 水平方向のレイアウト
+	/// 水平方向のレイアウトビュー
 	/// </summary>
-	public class HorizontalLayout : BaseLayout {
+	public class HorizontalLayoutView : BaseLayoutView {
 
-		public HorizontalLayout(BaseLayout parent) : base(parent) {
+		public HorizontalLayoutView(BaseLayoutView parent) : base(parent) {
 		}
 
 		/// <summary>

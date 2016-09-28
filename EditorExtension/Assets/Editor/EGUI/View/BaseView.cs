@@ -7,7 +7,7 @@ namespace EGUI {
 	/// </summary>
 	public class BaseView : Node {
 
-		public BaseView(BaseLayout parent) : base(parent) {
+		public BaseView(BaseLayoutView parent) : base(parent) {
 		}
 
 		public BaseView() : this(null) {

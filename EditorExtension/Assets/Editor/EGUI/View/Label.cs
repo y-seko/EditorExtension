@@ -8,17 +8,17 @@ namespace EGUI {
 		string title;
 		string text;
 
-		public Label(BaseLayout parent, string title, string text)
+		public Label(BaseLayoutView parent, string title, string text)
 			: base(parent) {
 			this.title = title;
 			this.text = text;
 		}
 
-		public Label(BaseLayout parent, string text)
+		public Label(BaseLayoutView parent, string text)
 			: this(parent, "", text) {
 		}
 
-		public Label(BaseLayout parent)
+		public Label(BaseLayoutView parent)
 			: this(parent, "", "") {
 		}
 
