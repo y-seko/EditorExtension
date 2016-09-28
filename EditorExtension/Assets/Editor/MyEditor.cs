@@ -19,19 +19,9 @@ public class MyEditorWindow : Window {
 //		VerticalLayoutView layout = new VerticalLayoutView (this.layout);
 
 		Label label = new Label (view, "Hello");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-		new Label (view, "Title", "Hello2");
-
-//		label.AddOption (GUILayout.Height(100));
 		label.AddOptions (GUILayout.Height(50));
+
+		TextField textField = new TextField (view, "TextField");
+
 	}
 }

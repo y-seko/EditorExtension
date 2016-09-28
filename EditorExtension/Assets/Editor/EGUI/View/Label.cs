@@ -15,8 +15,8 @@ namespace EGUI {
 			this.text = text;
 		}
 
-		public Label(BaseLayoutView parent, string text)
-			: this(parent, "", text) {
+		public Label(BaseLayoutView parent, string title)
+			: this(parent, title, "") {
 		}
 
 		public Label(BaseLayoutView parent)

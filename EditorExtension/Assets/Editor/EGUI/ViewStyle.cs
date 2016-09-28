@@ -9,6 +9,7 @@ namespace EGUI {
 		None,
 		Label,
 		Box,
+		TextField,
 	}
 
 	static class ViewStyleExtension {
@@ -23,6 +24,8 @@ namespace EGUI {
 				return GUI.skin.box;
 			case ViewStyle.Label:
 				return GUI.skin.label;
+			case ViewStyle.TextField:
+				return GUI.skin.textField;
 			default:
 				return GUIStyle.none;
 			}
