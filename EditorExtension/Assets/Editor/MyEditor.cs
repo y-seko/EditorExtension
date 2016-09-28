@@ -21,14 +21,16 @@ public class MyEditorWindow : Window, IButtonEventReceiver {
 	public override void OnCreateView() {
 //		VerticalLayoutView layout = new VerticalLayoutView (this.layout);
 
-		Label label = new Label (view, "Hello");
+		Label label = new Label (view, "Label", "Hello");
 		label.AddOptions (GUILayout.Height(50));
 
-		textField = new TextField (view, "TextField");
+		textField = new TextField (view, "Text Field");
 
 		Button button = new Button (view, "Click");
 		button.AddOptions (GUILayout.Width(70));
 		button.AddReceiver (this);
+
+		new TextArea (view, "Text Area");
 	}
 
 	public void OnClick(Button button) {
