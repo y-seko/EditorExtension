@@ -11,7 +11,10 @@ public class MyEditor : MonoBehaviour {
 	}
 }
 
-public class MyEditorWindow : Window {
+public class MyEditorWindow : Window, IButtonEventReceiver {
+
+	TextField textField;
+
 	/// <summary>
 	/// ビューの作成
 	/// </summary>
@@ -21,7 +24,14 @@ public class MyEditorWindow : Window {
 		Label label = new Label (view, "Hello");
 		label.AddOptions (GUILayout.Height(50));
 
-		TextField textField = new TextField (view, "TextField");
+		textField = new TextField (view, "TextField");
 
+		Button button = new Button (view, "Click");
+		button.AddOptions (GUILayout.Width(70));
+		button.AddReceiver (this);
+	}
+
+	public void OnClick(Button button) {
+		Debug.Log (textField.text);
 	}
 }

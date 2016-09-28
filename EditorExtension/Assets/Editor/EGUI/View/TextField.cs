@@ -27,6 +27,9 @@ namespace EGUI {
 			: this(null) {
 		}
 
+		/// <summary>
+		/// 描画
+		/// </summary>
 		public override void OnDraw () {
 			text = EditorGUILayout.TextField (title, text, style.GetGUIStyle (), optionList.ToArray ());
 		}

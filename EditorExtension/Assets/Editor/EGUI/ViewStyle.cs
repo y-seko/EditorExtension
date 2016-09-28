@@ -10,6 +10,10 @@ namespace EGUI {
 		Label,
 		Box,
 		TextField,
+		TextArea,
+		Button,
+		Toggle,
+		ToggleLeft,
 	}
 
 	static class ViewStyleExtension {
@@ -26,6 +30,14 @@ namespace EGUI {
 				return GUI.skin.label;
 			case ViewStyle.TextField:
 				return GUI.skin.textField;
+			case ViewStyle.TextArea:
+				return GUI.skin.textArea;
+			case ViewStyle.Button:
+				return GUI.skin.button;
+			case ViewStyle.Toggle:
+				return GUI.skin.toggle;
+			case ViewStyle.ToggleLeft:
+				return GUI.skin.label;
 			default:
 				return GUIStyle.none;
 			}
