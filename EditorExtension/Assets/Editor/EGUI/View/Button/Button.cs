@@ -4,11 +4,22 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace EGUI {
+	/// <summary>
+	/// Button.
+	/// </summary>
 	public class Button : BaseView {
 
-		string text;
+		// public fields.
+		public string text;
+
+		// private fields.
 		List<IButtonEventReceiver> receivers;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="EGUI.Button"/> class.
+		/// </summary>
+		/// <param name="parent">Parent.</param>
+		/// <param name="text">Text.</param>
 		public Button(BaseLayoutView parent, string text)
 			: base (parent) {
 			this.style = ViewStyle.Button;

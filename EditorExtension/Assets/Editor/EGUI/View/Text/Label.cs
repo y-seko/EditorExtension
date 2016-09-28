@@ -3,10 +3,14 @@ using UnityEditor;
 using System.Collections;
 
 namespace EGUI {
+	/// <summary>
+	/// Label.
+	/// </summary>
 	public class Label : BaseView {
 
-		string title;
-		string text;
+		// public fields.
+		public string title;
+		public string text;
 
 		public Label(BaseLayoutView parent, string title, string text)
 			: base(parent) {

@@ -3,9 +3,13 @@ using UnityEditor;
 using System.Collections;
 
 namespace EGUI {
+	/// <summary>
+	/// Text field.
+	/// </summary>
 	public class TextField : BaseView {
 
-		string title;
+		// public fields.
+		public string title;
 		public string text;
 
 		public TextField(BaseLayoutView parent, string title, string text)
