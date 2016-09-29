@@ -24,6 +24,12 @@ namespace EGUI {
 		public abstract void OnDraw();
 
 		/// <summary>
+		/// Raises the update event.
+		/// </summary>
+		public virtual void OnUpdate () {
+		}
+
+		/// <summary>
 		/// Adds the options.
 		/// </summary>
 		/// <param name="options">Options.</param>

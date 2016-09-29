@@ -28,17 +28,21 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 		label.AddOptions (GUILayout.Height(20));
 
 		VerticalLayoutView layout = new VerticalLayoutView (view);
-		textField = new TextField (layout, "Text Field");
+		{
+			textField = new TextField (layout, "Text Field");
 
-		Button button = new Button (layout, "Click");
-		button.AddOptions (GUILayout.Width(70));
-		button.AddReceiver (this);
+			Button button = new Button (layout, "Click");
+			button.AddOptions (GUILayout.Width (70));
+			button.AddReceiver (this);
 
-		textArea = new TextArea (layout, "Text Area");
+			textArea = new TextArea (layout, "Text Area");
+		}
 
-		new Toggle (view, "Toggle").AddReceiver(this);
-
-		new ToggleLeft (view, "Toggle").AddReceiver(this);
+		VerticalLayoutView layout2 = new VerticalLayoutView (view);
+		{
+			new Toggle (layout2, "Toggle").AddReceiver (this);
+			new ToggleLeft (layout2, "Toggle").AddReceiver (this);
+		}
 
 		floatSlider = new FloatSlider (view, "Float", 1, 10, 1);
 		floatSlider.AddReceiver (this);

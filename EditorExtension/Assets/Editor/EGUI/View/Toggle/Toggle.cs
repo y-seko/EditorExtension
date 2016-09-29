@@ -15,6 +15,7 @@ namespace EGUI {
 
 		// private fields.
 		List<IToggleEventReceiver> receivers;
+		bool isValueChanged;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EGUI.Toggle"/> class.
@@ -49,10 +50,20 @@ namespace EGUI {
 			bool prev = isCheck;
 			isCheck = DrawToggle ();
 			if (isCheck != prev) {
+				isValueChanged = true;
+			}
+		}
+
+		/// <summary>
+		/// Raises the update event.
+		/// </summary>
+		public override void OnUpdate () {
+			if (isValueChanged) {
 				foreach (IToggleEventReceiver receiver in receivers) {
 					receiver.OnValueChanged (this);
 				}
 				GUIUtility.keyboardControl = 0;
+				isValueChanged = false;
 			}
 		}
 

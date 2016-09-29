@@ -14,6 +14,7 @@ namespace EGUI {
 
 		// private fields.
 		List<ISliderEventReceiver> receivers;
+		bool isValueChanged;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EGUI.Slider"/> class.
@@ -31,10 +32,18 @@ namespace EGUI {
 		/// 描画
 		/// </summary>
 		public override void OnDraw () {
-			if (DrawSlider()) {
+			isValueChanged = DrawSlider ();
+		}
+
+		/// <summary>
+		/// Raises the update event.
+		/// </summary>
+		public override void OnUpdate () {
+			if (isValueChanged) {
 				foreach (ISliderEventReceiver receiver in receivers) {
 					receiver.OnValueChanged (this);
 				}
+				isValueChanged = false;
 			}
 		}
 

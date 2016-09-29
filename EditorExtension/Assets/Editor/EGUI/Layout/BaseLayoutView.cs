@@ -21,11 +21,24 @@ namespace EGUI {
 		}
 
 		/// <summary>
+		/// Raises the update event.
+		/// </summary>
+		public override void OnUpdate () {
+			UpdateChildren ();
+		}
+
+		/// <summary>
 		/// 子ビューの描画
 		/// </summary>
 		public void DrawChildren() {
 			foreach (Node child in children) {
 				((BaseView)child).OnDraw ();
+			}
+		}
+
+		public void UpdateChildren() {
+			foreach (Node child in children) {
+				((BaseView)child).OnUpdate ();
 			}
 		}
 	}

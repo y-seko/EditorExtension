@@ -14,6 +14,7 @@ namespace EGUI {
 
 		// private fields.
 		List<IButtonEventReceiver> receivers;
+		bool clicked;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EGUI.Button"/> class.
@@ -40,10 +41,20 @@ namespace EGUI {
 		/// </summary>
 		public override void OnDraw () {
 			if (GUILayout.Button (text, style.GetGUIStyle (), optionList.ToArray ())) {
+				clicked = true;
+			}
+		}
+
+		/// <summary>
+		/// Raises the update event.
+		/// </summary>
+		public override void OnUpdate () {
+			if (clicked) {
 				foreach (IButtonEventReceiver receiver in receivers) {
 					receiver.OnClick (this);
 				}
 				GUIUtility.keyboardControl = 0;
+				clicked = false;
 			}
 		}
 

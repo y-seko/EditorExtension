@@ -26,6 +26,13 @@ namespace EGUI {
 		}
 
 		/// <summary>
+		/// Update this instance.
+		/// </summary>
+		void Update() {
+			view.OnUpdate ();
+		}
+
+		/// <summary>
 		/// ビューの作成
 		/// </summary>
 		public virtual void OnCreateView() {
