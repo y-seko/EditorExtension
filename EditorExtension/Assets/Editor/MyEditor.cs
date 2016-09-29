@@ -11,13 +11,19 @@ public class MyEditor : MonoBehaviour {
 	}
 }
 
-public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver, ISliderEventReceiver {
+public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver, ISliderEventReceiver, IEnumPopupEventReceiver {
 
 	TextField textField;
 	TextArea textArea;
 
 	FloatSlider floatSlider;
 	IntSlider intSlider;
+
+	public enum MyItem{
+		Item1,
+		Item2,
+		Item3,
+	}
 
 	/// <summary>
 	/// ビューの作成
@@ -53,6 +59,9 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 
 		intSlider = new IntSlider (view, "Int", 1, 10, 1);
 		intSlider.AddReceiver (this);
+
+		EnumPopup popup = new EnumPopup (view, MyItem.Item1);
+		popup.AddReceiver (this);
 	}
 
 	/// <summary>
@@ -87,5 +96,9 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 			int value = ((IntSlider)slider).value;
 			Debug.Log ("value : " + value);
 		}
+	}
+
+	public void OnValueChanged(EnumPopup popup) {
+		Debug.Log ("Enum : " + popup.value.ToString());
 	}
 }
