@@ -16,7 +16,8 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 	TextField textField;
 	TextArea textArea;
 
-	Slider slider;
+	FloatSlider floatSlider;
+	IntSlider intSlider;
 
 	/// <summary>
 	/// ビューの作成
@@ -39,8 +40,11 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 
 		new ToggleLeft (view, "Toggle").AddReceiver(this);
 
-		slider = new Slider (view, "Slider", 1, 10, 1);
-		slider.AddReceiver (this);
+		floatSlider = new FloatSlider (view, "Float", 1, 10, 1);
+		floatSlider.AddReceiver (this);
+
+		intSlider = new IntSlider (view, "Int", 1, 10, 1);
+		intSlider.AddReceiver (this);
 	}
 
 	/// <summary>
@@ -65,8 +69,15 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 	/// <param name="toggle">Toggle.</param>
 	/// <param name="slider">Slider.</param>
 	public void OnValueChanged(Slider slider) {
-		if (Selection.activeTransform) {
-			Selection.activeTransform.localScale = new Vector3 (slider.value, slider.value, slider.value);
+		if (slider == floatSlider) {
+			if (Selection.activeTransform) {
+				float value = ((FloatSlider)slider).value;
+				Selection.activeTransform.localScale = new Vector3 (value, value, value);
+			}
+		}
+		else if (slider == intSlider) {
+			int value = ((IntSlider)slider).value;
+			Debug.Log ("value : " + value);
 		}
 	}
 }

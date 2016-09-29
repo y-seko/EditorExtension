@@ -7,13 +7,10 @@ namespace EGUI {
 	/// <summary>
 	/// Slider.
 	/// </summary>
-	public class Slider : BaseView {
+	public abstract class Slider : BaseView {
 
 		// public fields.
 		public string title;
-		public float min;
-		public float max;
-		public float value;
 
 		// private fields.
 		List<ISliderEventReceiver> receivers;
@@ -23,16 +20,10 @@ namespace EGUI {
 		/// </summary>
 		/// <param name="parent">Parent.</param>
 		/// <param name="title">Title.</param>
-		/// <param name="min">Minimum.</param>
-		/// <param name="max">Max.</param>
-		/// <param name="value">Value.</param>
-		public Slider(BaseLayoutView parent, string title, float min, float max, float value)
+		public Slider(BaseLayoutView parent, string title)
 			: base(parent) {
 			this.style = ViewStyle.None;
 			this.title = title;
-			this.min = min;
-			this.max = max;
-			this.value = value;
 			this.receivers = new List<ISliderEventReceiver> ();
 		}
 
@@ -40,9 +31,7 @@ namespace EGUI {
 		/// 描画
 		/// </summary>
 		public override void OnDraw () {
-			float prev = value;
-			value = EditorGUILayout.Slider (title, value, min, max, optionList.ToArray());
-			if (prev != value) {
+			if (DrawSlider()) {
 				foreach (ISliderEventReceiver receiver in receivers) {
 					receiver.OnValueChanged (this);
 				}
@@ -64,5 +53,11 @@ namespace EGUI {
 		public void RemoveReceiver(ISliderEventReceiver receiver) {
 			receivers.Remove (receiver);
 		}
+
+		/// <summary>
+		/// Draws the slider.
+		/// </summary>
+		/// <returns><c>true</c>, if slider was drawn, <c>false</c> otherwise.</returns>
+		public abstract bool DrawSlider ();
 	}
 }
