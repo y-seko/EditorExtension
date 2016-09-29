@@ -19,6 +19,8 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 	FloatSlider floatSlider;
 	IntSlider intSlider;
 
+	PropertyField propertyField;
+
 	public enum MyItem{
 		Item1,
 		Item2,
@@ -62,6 +64,13 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 
 		EnumPopup popup = new EnumPopup (view, MyItem.Item1);
 		popup.AddReceiver (this);
+
+		VerticalLayoutView layout3 = new VerticalLayoutView (view);
+		{
+			MyObject obj = ScriptableObject.CreateInstance<MyObject> ();
+			SerializedObject serializedObject = new SerializedObject (obj);
+			propertyField = new PropertyField (layout3, serializedObject.FindProperty ("myVector"));
+		}
 	}
 
 	/// <summary>
@@ -70,6 +79,8 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 	/// <param name="button">Button.</param>
 	public void OnClick(Button button) {
 		textArea.text = textField.text;
+
+		Debug.Log ("property : " + propertyField.property.vector3Value);
 	}
 
 	/// <summary>
@@ -101,4 +112,9 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 	public void OnValueChanged(EnumPopup popup) {
 		Debug.Log ("Enum : " + popup.value.ToString());
 	}
+}
+
+public class MyObject : ScriptableObject {
+	public int myInt = 100;
+	public Vector3 myVector;
 }
