@@ -38,11 +38,15 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 			textArea = new TextArea (layout, "Text Area");
 		}
 
+		new EGUI.Space (view);
+
 		VerticalLayoutView layout2 = new VerticalLayoutView (view);
 		{
 			new Toggle (layout2, "Toggle").AddReceiver (this);
 			new ToggleLeft (layout2, "Toggle").AddReceiver (this);
 		}
+
+		new EGUI.Space (view);
 
 		floatSlider = new FloatSlider (view, "Float", 1, 10, 1);
 		floatSlider.AddReceiver (this);
