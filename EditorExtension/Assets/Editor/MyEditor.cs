@@ -71,6 +71,8 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 			SerializedObject serializedObject = new SerializedObject (obj);
 			propertyField = new PropertyField (layout3, serializedObject.FindProperty ("myVector"));
 		}
+
+		new IntField (view, 100);
 	}
 
 	/// <summary>
