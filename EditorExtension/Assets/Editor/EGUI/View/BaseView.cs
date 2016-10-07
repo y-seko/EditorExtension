@@ -9,9 +9,12 @@ namespace EGUI {
 	public abstract class BaseView : Node {
 
 		public ViewStyle style = ViewStyle.None;
+		public bool active;
+
 		protected List<GUILayoutOption> optionList;
 
 		public BaseView(BaseLayoutView parent) : base(parent) {
+			active = true;
 			optionList = new List<GUILayoutOption> ();
 		}
 

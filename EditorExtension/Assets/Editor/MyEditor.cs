@@ -21,6 +21,10 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 
 	PropertyField propertyField;
 
+	Button activeButton;
+
+	VerticalLayoutView vLayout4;
+
 	public enum MyItem{
 		Item1,
 		Item2,
@@ -37,11 +41,15 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 
 		VerticalLayoutView layout = new VerticalLayoutView (view);
 		{
-			textField = new TextField (layout, "Text Field");
+			HorizontalLayoutView hLayout = new HorizontalLayoutView (layout);
+			hLayout.style = ViewStyle.None;
+			{
+				textField = new TextField (hLayout, "Text Field");
 
-			Button button = new Button (layout, "Click");
-			button.AddOptions (GUILayout.Width (70));
-			button.AddReceiver (this);
+				Button button = new Button (hLayout, "Copy");
+				button.AddOptions (GUILayout.Width (70));
+				button.AddReceiver (this);
+			}
 
 			textArea = new TextArea (layout, "Text Area");
 		}
@@ -72,7 +80,16 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 			propertyField = new PropertyField (layout3, serializedObject.FindProperty ("myVector"));
 		}
 
-		new IntField (view, 100);
+		new IntField (view, "Int Field", 100);
+
+		activeButton = new Button (view, "Atcive");
+		activeButton.AddOptions (GUILayout.Width (50));
+		activeButton.AddReceiver (this);
+
+		vLayout4 = new VerticalLayoutView (view);
+		{
+			new Label (vLayout4, "Hello");
+		}
 	}
 
 	/// <summary>
@@ -80,9 +97,12 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 	/// </summary>
 	/// <param name="button">Button.</param>
 	public void OnClick(Button button) {
-		textArea.text = textField.text;
-
-		Debug.Log ("property : " + propertyField.property.vector3Value);
+		if (button == activeButton) {
+			vLayout4.active = !vLayout4.active;
+		}
+		else {
+			textArea.text = textField.text;
+		}
 	}
 
 	/// <summary>

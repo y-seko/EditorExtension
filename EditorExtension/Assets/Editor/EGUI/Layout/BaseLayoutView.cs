@@ -32,13 +32,19 @@ namespace EGUI {
 		/// </summary>
 		public void DrawChildren() {
 			foreach (Node child in children) {
-				((BaseView)child).OnDraw ();
+				BaseView view = (BaseView)child;
+				if (view.active) {
+					view.OnDraw ();
+				}
 			}
 		}
 
 		public void UpdateChildren() {
 			foreach (Node child in children) {
-				((BaseView)child).OnUpdate ();
+				BaseView view = (BaseView)child;
+				if (view.active) {
+					view.OnUpdate ();
+				}
 			}
 		}
 	}
