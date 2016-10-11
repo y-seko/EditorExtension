@@ -20,6 +20,8 @@ namespace EGUI {
 
 		public Direction direction = Direction.Vertical;
 
+		protected List<T> itemList;
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EGUI.ListView`1"/> class.
 		/// </summary>
@@ -36,6 +38,7 @@ namespace EGUI {
 		/// </summary>
 		/// <param name="itemList">Item list.</param>
 		public void SetItemList(List<T> itemList) {
+			this.itemList = itemList;
 			foreach (T item in itemList) {
 				CreateCell (item);
 			}

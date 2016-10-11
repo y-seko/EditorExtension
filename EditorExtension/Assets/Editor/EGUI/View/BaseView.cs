@@ -10,6 +10,7 @@ namespace EGUI {
 
 		public ViewStyle style = ViewStyle.None;
 		public bool active;
+		public string tag;
 
 		protected List<GUILayoutOption> optionList;
 

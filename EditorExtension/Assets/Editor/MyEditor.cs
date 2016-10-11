@@ -158,7 +158,7 @@ public class MyListItem {
 	}
 }
 
-public class MyListView : ListView<MyListItem> {
+public class MyListView : ListView<MyListItem>, IButtonEventReceiver {
 
 	public MyListView(BaseLayoutView parent) : base(parent, Direction.Vertical) {
 	}
@@ -166,6 +166,12 @@ public class MyListView : ListView<MyListItem> {
 	public override void CreateCell (MyListItem item) {
 		HorizontalLayoutView hLayout = new HorizontalLayoutView (this);
 		new Label(hLayout, item.text);
-		new Button(hLayout, "Click");
+		Button button = new Button(hLayout, "Click");
+		button.tag = itemList.IndexOf (item).ToString();
+		button.AddReceiver (this);
+	}
+
+	public void OnClick(Button button) {
+		Debug.Log ("Click : " + button.tag);
 	}
 }
