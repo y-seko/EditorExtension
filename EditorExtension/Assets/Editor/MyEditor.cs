@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using System.Collections.Generic;
 using EGUI;
 
 public class MyEditor : MonoBehaviour {
@@ -90,6 +91,15 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 		{
 			new Label (vLayout4, "Hello");
 		}
+
+		List<MyListItem> list = new List<MyListItem> () {
+			new MyListItem("Item1"),
+			new MyListItem("Item2"),
+			new MyListItem("Item3"),
+		};
+
+		MyListView listView = new MyListView (view);
+		listView.SetItemList (list);
 	}
 
 	/// <summary>
@@ -139,4 +149,23 @@ public class MyEditorWindow : Window, IButtonEventReceiver, IToggleEventReceiver
 public class MyObject : ScriptableObject {
 	public int myInt = 100;
 	public Vector3 myVector;
+}
+
+public class MyListItem {
+	public string text;
+	public MyListItem(string text) {
+		this.text = text;
+	}
+}
+
+public class MyListView : ListView<MyListItem> {
+
+	public MyListView(BaseLayoutView parent) : base(parent, Direction.Vertical) {
+	}
+
+	public override void CreateCell (MyListItem item) {
+		HorizontalLayoutView hLayout = new HorizontalLayoutView (this);
+		new Label(hLayout, item.text);
+		new Button(hLayout, "Click");
+	}
 }
